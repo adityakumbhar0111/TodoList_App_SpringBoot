@@ -1,16 +1,180 @@
-# React + Vite
+# 📝 Todo Task Management Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A full-stack **Todo Task Management Application** built using **Spring Boot (REST API)** and **React.js**.
+This application allows users to **create, update, delete, and mark tasks as completed** with a clean UI and real-time updates.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+# 🚀 Features
 
-## React Compiler
+- ➕ Add new tasks
+- ✏️ Update existing tasks
+- ❌ Delete tasks
+- ✅ Mark tasks as **Completed**
+- 📅 Task date management
+- 🔄 Real-time UI updates
+- 🎯 Strike-through effect for completed tasks
+- 📢 Popup notifications for actions
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+# 🛠️ Tech Stack
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Frontend
+
+- React.js
+- Axios
+- HTML5
+- CSS3
+
+## Backend
+
+- Spring Boot
+- Spring Web
+- Spring Data JPA
+- Hibernate
+
+## Database
+
+- MySQL
+
+---
+
+# 📂 Project Structure
+
+```
+Todo-Application
+│
+├── backend (Spring Boot)
+│   ├── controller
+│   ├── service
+│   ├── repository
+│   ├── model
+│   └── application.properties
+│
+└── frontend (React)
+    ├── components
+    ├── App.js
+    ├── UserTask.js
+    ├── App.css
+    └── package.json
+```
+
+---
+
+# ⚙️ Backend Setup (Spring Boot)
+
+### 1️⃣ Clone Repository
+
+```
+git clone https://github.com/yourusername/todo-app.git
+```
+
+### 2️⃣ Open Project
+
+Open the backend project in **Spring Tool Suite/Eclipse / IntelliJ / VS Code**
+
+### 3️⃣ Configure Database
+
+Update `application.properties`
+
+```
+spring.datasource.url=jdbc:mysql://localhost:3306/todo_db
+spring.datasource.username=root
+spring.datasource.password=yourpassword
+
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+```
+
+### 4️⃣ Run Application
+
+Run the Spring Boot application.
+
+Server will start on:
+
+```
+http://localhost:8080
+```
+
+---
+
+# 📡 REST API Endpoints
+
+| Method | Endpoint                       | Description        |
+| ------ | ------------------------------ | ------------------ |
+| GET    | `/get-task`                    | Get all tasks      |
+| POST   | `/add-task`                    | Add new task       |
+| PUT    | `/update-task/{id}`            | Update task        |
+| DELETE | `/delete-task/{id}`            | Delete task        |
+| PATCH  | `/update-status/{id}/{status}` | Update task status |
+
+---
+
+# 🎨 Frontend Setup (React)
+
+### 1️⃣ Navigate to Frontend
+
+```
+cd frontend
+```
+
+### 2️⃣ Install Dependencies
+
+```
+npm install
+```
+
+### 3️⃣ Run React App
+
+```
+npm start
+```
+
+Application runs on:
+
+```
+http://localhost:3000
+```
+
+---
+
+# 📷 Application Workflow
+
+```
+User Adds Task
+      ↓
+Task Stored in Database
+      ↓
+React Fetches Tasks
+      ↓
+User Can Update/Delete
+      ↓
+User Marks Task Completed
+      ↓
+Strike-through Applied in UI
+```
+
+---
+
+# 💡 Future Improvements
+
+- 🔐 User Authentication (JWT)
+- 🌙 Dark Mode UI
+- 📊 Task Progress Dashboard
+- 🧠 Smart Task Reminders
+- 📱 Mobile Responsive Design
+
+---
+
+# 👨‍💻 Author
+
+Developed by **Aditya Kumbhar**
+
+---
+
+# ⭐ Support
+
+If you like this project, please **give it a star ⭐ on GitHub**.
+
+> > > > > > > 2ab46ec6f027dcc56839b2df6675cdff9e8f340d
