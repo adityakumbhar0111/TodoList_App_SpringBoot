@@ -1,6 +1,7 @@
 import {useEffect, useState} from "react";
 import axios from "axios";
 import "./App.css";
+import {useNavigate} from "react-router-dom";
 
 const UserTask = () => {
   const [tasks, setTasks] = useState([]);
@@ -10,13 +11,17 @@ const UserTask = () => {
   const [editId, setEditId] = useState(null);
   const [msg, setMsg] = useState("Response");
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     getAllTask();
   }, []);
 
   const getAllTask = () => {
     axios
-      .get("http://localhost:8080/get-task")
+      .get("http://localhost:8080/get-task", {
+        withCredentials: true,
+      })
       .then((res) => {
         setTasks(res.data);
         console.table(res.data);
@@ -34,7 +39,9 @@ const UserTask = () => {
     };
 
     axios
-      .post("http://localhost:8080/add-task", info)
+      .post("http://localhost:8080/add-task", info, {
+        withCredentials: true,
+      })
       .then((res) => {
         setMsg(res.data);
         getAllTask();
@@ -47,7 +54,9 @@ const UserTask = () => {
   // DELETE TASK
   const deleteUserTask = (id) => {
     axios
-      .delete(`http://localhost:8080/delete-task/${id}`)
+      .delete(`http://localhost:8080/delete-task/${id}`, {
+        withCredentials: true,
+      })
       .then((res) => {
         setMsg(res.data);
         getAllTask();
@@ -72,7 +81,9 @@ const UserTask = () => {
     };
 
     axios
-      .put(`http://localhost:8080/update-task/${editId}`, info)
+      .put(`http://localhost:8080/update-task/${editId}`, info, {
+        withCredentials: true,
+      })
       .then((res) => {
         setMsg(res.data);
         getAllTask();
@@ -88,7 +99,13 @@ const UserTask = () => {
     let msg = "Completed";
 
     axios
-      .patch(`http://localhost:8080/update-status/${id}/${msg}`)
+      .patch(
+        `http://localhost:8080/update-status/${id}/${msg}`,
+        {},
+        {
+          withCredentials: true,
+        },
+      )
       .then((res) => {
         setMsg(res.data);
 
@@ -103,7 +120,7 @@ const UserTask = () => {
 
   return (
     <div className="mainDiv">
-      <h2 className="todo-title">📝 Todo List</h2>
+      {/* <h2 className="todo-title">📝 Todo List</h2> */}
 
       {msg !== "Response" && (
         <div className="popup">
@@ -134,52 +151,59 @@ const UserTask = () => {
 
       <hr />
 
-      <table border="1" width="100%">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Task</th>
-            <th>Date</th>
-            <th>Update</th>
-            <th>Delete</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          {tasks.map((t) => (
-            <tr
-              key={t.id}
-              className={t.status === "Completed" ? "completed" : "incomplete"}
-            >
-              <td>{t.id}</td>
-              <td>{t.task}</td>
-              <td>{new Date(t.date).toLocaleDateString()}</td>
-
-              <td>
-                <button onClick={() => editTask(t)} className="update">
-                  Update
-                </button>
-              </td>
-
-              <td>
-                <button onClick={() => deleteUserTask(t.id)} className="delete">
-                  Delete
-                </button>
-              </td>
-
-              <td>
-                <button
-                  onClick={() => updateUserTaskStatus(t.id)}
-                  className="update"
-                >
-                  Completed
-                </button>
-              </td>
+      <div className="table-container">
+        <table width="100%">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Task</th>
+              <th>Date</th>
+              <th>Update</th>
+              <th>Delete</th>
+              <th>Status</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+
+          <tbody>
+            {tasks.map((t) => (
+              <tr
+                key={t.id}
+                className={
+                  t.status === "Completed" ? "completed" : "incomplete"
+                }
+              >
+                <td>{t.id}</td>
+                <td>{t.task}</td>
+                <td>{new Date(t.date).toLocaleDateString()}</td>
+
+                <td>
+                  <button onClick={() => editTask(t)} className="update">
+                    Update
+                  </button>
+                </td>
+
+                <td>
+                  <button
+                    onClick={() => deleteUserTask(t.id)}
+                    className="delete"
+                  >
+                    Delete
+                  </button>
+                </td>
+
+                <td>
+                  <button
+                    onClick={() => updateUserTaskStatus(t.id)}
+                    className="update"
+                  >
+                    {t.status === "Completed" ? "Completed" : "Incomplete"}
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

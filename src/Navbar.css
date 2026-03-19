@@ -1,0 +1,328 @@
+/* NAVBAR */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 40px;
+    background: linear-gradient(90deg, #020617, #0f172a, #020617);
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+}
+
+/* LOGO */
+
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: #38bdf8;
+}
+
+/* NAV LINKS CONTAINER */
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+/* NAV LINKS */
+
+.nav-links a {
+    text-decoration: none;
+    color: #e2e8f0;
+    font-size: 16px;
+    font-weight: 500;
+    position: relative;
+    transition: 0.3s;
+}
+
+/* HOVER EFFECT */
+
+.nav-links a:hover {
+    color: #38bdf8;
+}
+
+/* UNDERLINE ANIMATION */
+
+.nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 0%;
+    height: 2px;
+    background: #38bdf8;
+    transition: 0.3s;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+    }
+
+    .nav-links {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+}
+
+/* THEME BUTTON */
+
+.theme-btn {
+    padding: 8px 14px;
+    border: none;
+    border-radius: 20px;
+    background: #38bdf8;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.theme-btn:hover {
+    transform: scale(1.05);
+}
+
+/* DARK THEME */
+
+body.dark {
+    background: #0f172a;
+    color: white;
+}
+
+/* LIGHT MODE PAGE BACKGROUND */
+
+body.light {
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #f0fbff, #e0f2fe);
+    margin: 0;
+    padding: 0;
+}
+
+/* MAIN CONTAINER */
+
+body.light .mainDiv {
+    max-width: 900px;
+    margin: 40px auto;
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.597);
+    border-top: 6px solid #38bdf8;
+}
+
+
+/* FORM */
+
+body.light form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* INPUTS */
+
+body.light input {
+    /* background-color: #0f172a; */
+    background-color: #ffff;
+    padding: 10px;
+    border: 1px solid #38bdf8;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    color: black;
+}
+
+body.light .taskInput {
+    width: 80%;
+}
+
+body.light input:focus {
+    border-color: #2c7be5;
+    box-shadow: 0 0 4px rgba(44, 123, 229, 0.5);
+}
+
+/* BUTTONS */
+
+body.light button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+/* SUBMIT */
+
+body.light button[type="submit"] {
+    background: #2c7be5;
+    color: white;
+}
+
+body.light button[type="submit"]:hover {
+    background: #1a5edb;
+}
+
+/* DELETE */
+
+body.light .delete {
+    background: #e55353;
+    color: white;
+}
+
+body.light .delete:hover {
+    background: #c82333;
+}
+
+/* UPDATE */
+
+body.light .update {
+    background: #28a745;
+    color: white;
+}
+
+body.light .update:hover {
+    background: #218838;
+}
+
+/* TABLE */
+
+body.light table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffff;
+}
+
+
+body.light table td {
+    padding: 12px;
+    text-align: center;
+}
+
+
+body.light table tbody tr:hover {
+    background: #e8f0ff23;
+    transition: 0.3s;
+}
+
+body.light table td {
+    color: black;
+}
+
+/* DIVIDER */
+
+body.light hr {
+    border: none;
+    height: 1px;
+    background: #ddd;
+    margin: 20px 0;
+}
+
+/* POPUP */
+
+body.light .popup {
+    position: fixed;
+    top: 100px;
+    right: 50px;
+    background: #222;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 6px 15px rgba(255, 254, 254, 0.979);
+    animation: slideIn 0.4s ease;
+}
+
+body.light .popup button {
+    margin-left: 15px;
+    background: white;
+    color: black;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* COMPLETED TASK */
+
+body.light .completed {
+    text-decoration: line-through;
+    color: gray;
+    opacity: 0.7;
+}
+
+body.light .cards .completed {
+    background: #1e293b;
+    border-left: 5px solid #28a745;
+    color: #28a745;
+}
+
+body.light .completed button {
+    cursor: not-allowed;
+}
+
+body.light .title {
+    color: black;
+}
+
+body.light .history-table tbody tr {
+    background-color: #ffff;
+    color: black;
+}
+
+/* Light Background */
+body.light {
+    background: linear-gradient(135deg, #e2e8f0, #f8fafc, #e2e8f0);
+}
+
+/* Card */
+body.light .login form {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Title */
+body.light .login h2 {
+    color: #0f172a;
+}
+
+/* Input */
+body.light .login input {
+    background: rgba(0, 0, 0, 0.05);
+    color: #0f172a;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body.light .login input::placeholder {
+    color: rgba(0, 0, 0, 0.5);
+}
+
+/* Input Focus */
+body.light .login input:focus {
+    border: 1px solid #2563eb;
+    box-shadow: 0 0 5px rgba(37, 99, 235, 0.4);
+}
+
+/* Button */
+body.light .login button {
+    background: linear-gradient(135deg, #2563eb, #7c3aed);
+}

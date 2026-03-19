@@ -1,0 +1,72 @@
+/* MAIN CONTAINER */
+.profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+}
+
+/* CARD */
+.profile-card {
+    background: linear-gradient(135deg, #020617, #0f172a);
+    padding: 40px;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    width: 320px;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+/* TITLE */
+.profile-title {
+    font-size: 26px;
+    margin-bottom: 20px;
+}
+
+/* USER TEXT */
+.profile-user {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.profile-user span {
+    color: #38bdf8;
+    font-weight: bold;
+}
+
+/* BUTTON */
+.logout-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background: #ef4444;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.logout-btn:hover {
+    background: #dc2626;
+    transform: scale(1.05);
+}
+
+/* 🌞 LIGHT MODE */
+body.light .profile-card {
+    background: #ffffff;
+    color: #020617;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+body.light .profile-user span {
+    color: #2563eb;
+}
+
+body.light .logout-btn {
+    background: #dc2626;
+}
+
+body.light .logout-btn:hover {
+    background: #b91c1c;
+}
