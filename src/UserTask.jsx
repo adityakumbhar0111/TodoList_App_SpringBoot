@@ -67,7 +67,7 @@ const UserTask = () => {
   // FILL FORM FOR UPDATE
   const editTask = (t) => {
     setTask(t.task);
-    setDate(t.date);
+    setDate(t.date.split("T")[0]);
     setEditId(t.id);
   };
 
@@ -108,11 +108,6 @@ const UserTask = () => {
       )
       .then((res) => {
         setMsg(res.data);
-
-        // update local state
-        // setTasks((prevTasks) =>
-        //   prevTasks.map((t) => (t.id === id ? {...t, status: "Completed"} : t)),
-        // );
         getAllTask();
       })
       .catch((err) => console.log(err));
@@ -120,8 +115,6 @@ const UserTask = () => {
 
   return (
     <div className="mainDiv">
-      {/* <h2 className="todo-title">📝 Todo List</h2> */}
-
       {msg !== "Response" && (
         <div className="popup">
           <p>{msg}</p>

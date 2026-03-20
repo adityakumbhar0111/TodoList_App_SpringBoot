@@ -1,4 +1,4 @@
-import {BrowserRouter, Routes, Route} from "react-router-dom";
+import {BrowserRouter, Routes, Route, Navigate} from "react-router-dom";
 import Navbar from "./Navbar";
 import UserTask from "./UserTask";
 import GetHistroy from "./History";
@@ -12,6 +12,7 @@ function App() {
       <Navbar />
 
       <Routes>
+        <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/tasks" element={<UserTask />} />
         <Route path="/history" element={<GetHistroy />} />
         <Route path="/login" element={<Login />} />
